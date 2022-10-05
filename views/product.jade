@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1 #{product.name}
+    h1 #{product.info}
+    input#input(type="number", placeholder="Item Count")
+    button(onclick='addToCart()') Add to Cart
+    div
+        img(src="/assets/" + product.url)
+
+    script.
+        function addToCart() {
+            fetch("#{product.id}/addToCart", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({count: document.getElementById("input").value})
+            });
+        }

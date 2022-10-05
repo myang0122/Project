@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    div
+      table
+        thead
+          th Item Name
+          th Item Info
+          th Item Count
+        tbody
+          each item in items
+            tr
+              td #{item.product.name}
+              td #{item.product.info}
+              td #{item.itemCount}
+
+    .container
+        form(role='form', action='order', method='post')
+            label(for='name') Name
+            input.form-control(type='text', id='name', name='name', placeholder='enter a name')
+            br
+            label(for='phone') Phone Number
+            input.form-control(type='text', id='phone', name='phone', placeholder='enter a phone number')
+            br
+            label(for='email') Email
+            input.form-control(type='text', id='email', name='email', placeholder='enter an email')
+            br
+            label(for='shipping') Shipping Address
+            input.form-control(type='text', id='shipping', name='shipping', placeholder='enter a shipping address')
+            br
+            label(for='billing') Billing Address
+            input.form-control(type='text', id='billing', name='billing', placeholder='enter a billing address')
+            br
+            select(name="payment")
+                option(value="credit") Credit
+                option(value="debit") Debit
+                option(value="paypal") Paypal
+            br
+            button.btn.btn-primary(type='submit') Submit
+            a.btn.btn-default(role='button', href='/') Cancel

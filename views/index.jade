@@ -1,0 +1,118 @@
+extends layout
+
+block content
+
+  .container  
+      #gallerywrapper
+        #gallery 
+          button(onClick="prev()") Prev
+          button(onClick="next()") Next
+
+          each product, index in products
+            .image
+              p #{index+1} / #{products.length}
+              a(href='/product/' + product.id)
+                img(src='/assets/' + product.url)
+      
+  script.
+    let index = 0;
+    const elements = document.getElementsByClassName("image");
+    elements[0].classList.add("active_image");
+
+    function next() {
+      if (index == elements.length - 1) {
+        return;
+      }
+
+      index += 1;
+      elements[index-1].classList.remove("active_image");
+      elements[index].classList.add("active_image");
+    }
+
+    function prev() {
+      if (index == 0) {
+        return;
+      }
+
+      index -= 1;
+      elements[index+1].classList.remove("active_image");
+      elements[index].classList.add("active_image");
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+ 
+  //- h2(style='text-align:center') Slideshow Gallery
+  
+
+  //- .container
+  //-   .mySlides
+  //-     .numbertext 1 / 6
+  //-     img(src='/assets/1.jpeg', style='width:100%')
+  //-   .mySlides
+  //-     .numbertext 2 / 6
+  //-     img(src='/assets/1.jpeg' , style='width:100%')
+  //-   .mySlides
+  //-     .numbertext 3 / 6
+  //-     img(src='/assets/1.jpeg', style='width:100%')
+  //-   .mySlides
+  //-     .numbertext 4 / 6
+  //-     img(src='/assets/1.jpeg' , style='width:100%')
+  //-   .mySlides
+  //-     .numbertext 5 / 6
+  //-     img(src='/assets/1.jpeg', style='width:100%' )
+  //-   .mySlides
+  //-     .numbertext 6 / 6
+  //-     img(src='/assets/1.jpeg', style='width:100%')
+  //-   a.prev(onclick='plusSlides(-1)') ❮
+  //-   a.next(onclick='plusSlides(1)') ❯
+  //-   .caption-container
+  //-     p#caption
+  //-   .row
+  //-     .column
+  //-       img.demo.cursor(src='/assets/1.jpeg', onclick='currentSlide(1)', style='width:100%')
+  //-     .column
+  //-       img.demo.cursor(src='/assets/1.jpeg', onclick='currentSlide(2)', style='width:100%' )
+  //-     .column
+  //-       img.demo.cursor(src='/assets/1.jpeg' , onclick='currentSlide(3)' , style='width:100%' )
+  //-     .column
+  //-       img.demo.cursor(src='/assets/1.jpeg', onclick='currentSlide(4)', style='width:100%' )
+  //-     .column
+  //-       img.demo.cursor(src='/assets/1.jpeg' , onclick='currentSlide(5)', style='width:100%')
+  //-     .column
+  //-       img.demo.cursor(src='/assets/1.jpeg' , onclick='currentSlide(6)', style='width:100%' )
+  //- script.
+  //-   let slideIndex = 1;
+  //-   showSlides(slideIndex);
+  //-   function plusSlides(n) {
+  //-   showSlides(slideIndex += n);
+  //-   }
+  //-   function currentSlide(n) {
+  //-   showSlides(slideIndex = n);
+  //-   }
+  //-   function showSlides(n) {
+  //-   let i;
+  //-   let slides = document.getElementsByClassName("mySlides");
+  //-   let dots = document.getElementsByClassName("demo");
+  //-   let captionText = document.getElementById("caption");
+  //-   if (n > slides.length) {slideIndex = 1}
+  //-   if (n < 1) {slideIndex = slides.length}
+  //-   for (i = 0; i < slides.length; i++) {
+  //-   slides[i].style.display = "none";
+  //-   }
+  //-   for (i = 0; i < dots.length; i++) {
+  //-   dots[i].className = dots[i].className.replace(" active", "");
+  //-   }
+  //-   slides[slideIndex-1].style.display = "block";
+  //-   dots[slideIndex-1].className += " active";
+  //-   captionText.innerHTML = dots[slideIndex-1].alt;
+  //-   }

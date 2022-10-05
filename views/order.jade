@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    div
+      table
+        thead
+          th Items
+          th Order
+        tbody
+          each order in orders
+            tr
+              td #{JSON.stringify(order.items)}
+              td #{order.status}

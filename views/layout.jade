@@ -1,0 +1,121 @@
+doctype html
+html
+  head
+    style(type='text/css').
+      .ui-title {
+        margin: 0.6em 10% 0.8em !important;
+      }
+      #nav {
+        overflow: hidden;
+        background-color: #333;
+      }
+      #nav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      #nav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      #nav a.active {
+        background-color: #04AA6D;
+        color: white;
+      }
+      .image {
+        display: none;
+      }
+      .active_image {
+        display: block
+      }
+      img {
+        vertical-align: middle;
+      }
+      //- /* Position the image container (needed to position the left and right arrows) */
+      .container {
+        position: relative;
+      }
+      //- /* Hide the images by default */
+      .mySlides {
+        display: none;
+      }
+      //- /* Add a pointer when hovering over the thumbnail images */
+      .cursor {
+        cursor: pointer;
+      }
+      //- /* Next & previous buttons */
+      .prev,
+      .next {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+      }
+      //- /* Position the "next button" to the right */
+      .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+      }
+      //- /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      }
+      //- /* Number text (1/3 etc) */
+      .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+      }
+      //- /* Container for image text */
+      .caption-container {
+      text-align: center;
+      background-color: #222;
+      padding: 2px 16px;
+      color: white;
+      }
+      .row:after {
+      content: "";
+      display: table;
+      clear: both;
+      }
+      //- /* Six columns side by side */
+      .column {
+      float: left;
+      width: 16.66%;
+      }
+      //- /* Add a transparency effect for thumnbail images */
+      .demo {
+      opacity: 0.6;
+      }
+      .active,
+      .demo:hover {
+      opacity: 1;
+      }
+
+
+  body
+    #nav
+      a(href="/", class=page === 'home' ? 'active' : '') Home 
+      a(href="/user/cart", class=page === 'cart' ? 'active' : '') Cart 
+      a(href="/user/order", class=page === 'order' ? 'active' : '') My orders
+      if user
+        a(href="/logout", class=page === 'logout' ? 'active' : '') Logout
+      else 
+        a(href="/register", class=page === 'signup' ? 'active' : '') Sign Up 
+        a(href="/login", class=page === 'login' ? 'active' : '') Login
+
+    block content
